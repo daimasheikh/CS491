@@ -1,0 +1,12 @@
+{
+  "name": "paddle-ball-game",
+  "version": "1.0.0",
+  "description": "Simple paddle ball game",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "fast-check": "^3.23.1"
+  }
+}

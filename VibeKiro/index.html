@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Productivity Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1 id="greeting">Hello 👋</h1>
+        <p id="today" class="muted"></p>
+      </div>
+      <div class="clock" id="clock">--:--</div>
+    </header>
+
+    <main class="grid">
+      <!-- Motivation quote -->
+      <section class="card quote-card" aria-label="Daily motivation">
+        <div class="card-head">
+          <h2>Daily Motivation</h2>
+          <button class="icon-btn" id="newQuoteBtn" title="New quote" aria-label="New quote">↻</button>
+        </div>
+        <blockquote id="quoteText">Loading your daily spark…</blockquote>
+        <cite id="quoteAuthor" class="muted"></cite>
+      </section>
+
+      <!-- Weather -->
+      <section class="card weather-card" aria-label="Current weather">
+        <div class="card-head">
+          <h2>Weather</h2>
+          <button class="icon-btn" id="refreshWeatherBtn" title="Refresh weather" aria-label="Refresh weather">↻</button>
+        </div>
+        <div class="weather-search">
+          <input type="text" id="cityInput" placeholder="Search a city…" aria-label="City name" />
+          <button id="citySearchBtn" class="btn">Go</button>
+        </div>
+        <div class="weather-body">
+          <div class="weather-icon" id="weatherIcon">⛅</div>
+          <div class="weather-main">
+            <div class="temp" id="weatherTemp">--°</div>
+            <div class="desc" id="weatherDesc">Fetching weather…</div>
+            <div class="place muted" id="weatherPlace"></div>
+          </div>
+        </div>
+        <div class="weather-meta" id="weatherMeta"></div>
+      </section>
+
+      <!-- Pomodoro timer -->
+      <section class="card pomodoro-card" aria-label="Pomodoro timer">
+        <div class="card-head">
+          <h2>Pomodoro</h2>
+          <span class="pill" id="pomoPhase">Focus</span>
+        </div>
+
+        <div class="pomo-timer" id="pomoTime">25:00</div>
+        <div class="pomo-progress-track">
+          <div class="pomo-progress-fill" id="pomoProgress" style="width:0%"></div>
+        </div>
+
+        <div class="pomo-controls">
+          <button class="btn btn-primary" id="pomoStartBtn">Start</button>
+          <button class="btn" id="pomoResetBtn">Reset</button>
+          <button class="btn" id="pomoSkipBtn">Skip</button>
+        </div>
+
+        <div class="pomo-modes" role="group" aria-label="Timer length">
+          <button class="pomo-mode is-active" data-mode="focus" data-min="25">Focus 25</button>
+          <button class="pomo-mode" data-mode="short" data-min="5">Short 5</button>
+          <button class="pomo-mode" data-mode="long" data-min="15">Long 15</button>
+        </div>
+
+        <p class="pomo-stats muted" id="pomoStats">0 focus sessions done today</p>
+
+        <div class="cat-fact" id="catFact" hidden>
+          <span class="cat-emoji">🐱</span>
+          <p id="catFactText">Fetching a fun cat fact…</p>
+        </div>
+      </section>
+
+      <!-- Task tracker -->
+      <section class="card task-card" aria-label="Task tracker">
+        <div class="card-head">
+          <h2>Today's Tasks</h2>
+          <span class="pill" id="taskCount">0 / 0</span>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <span class="progress-label" id="progressLabel">0% complete</span>
+        </div>
+
+        <form class="task-add" id="taskForm">
+          <input type="text" id="taskInput" placeholder="Add a task and hit enter…" aria-label="New task" required />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <ul class="task-list" id="taskList"></ul>
+        <p class="empty-state muted" id="emptyState">No tasks yet. Add one above to get rolling. 🚀</p>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      Built for focus. Quotes &amp; weather load live, your tasks stay on this device.
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
